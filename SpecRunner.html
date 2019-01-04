@@ -1,31 +1,34 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<script src="https://rawgit.com/OperationSpark/assets/master/immersionProjectTests/addScripts.js"></script>
-  <title>Mocha Spec Runner</title>
-  <link rel="stylesheet" href="lib/mocha/mocha.css">
-  <script src="lib/jquery.js"></script>
-  <script src="lib/underscore.js"></script>
-  <script src="lib/mocha/mocha.js"></script>
-  <script src="lib/chai/chai.js"></script>
-  <script src="lib/sinon/sinon.js"></script>
-  <script>
-    mocha.setup({ui: 'bdd'});
-    window.expect = chai.expect;
-    $(function() {
-      window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
-    });
-  </script>
-  <script src="src/getElementsByClassName.js"></script>
-  <script src="src/stringifyJSON.js"></script>
-  <script src="src/parseJSON.js"></script>
-  <script src="spec/getElementsByClassNameSpec.js"></script>
-  <script src="spec/fixtures.js"></script>
-  <script src="spec/stringifyJSONSpec.js"></script>
-  <script src="spec/parseJSONSpec.js"></script>
-</head>
-<body>
-<div id="mocha"></div>
-</body>
-</html>
 
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+    <script>axios.get('http://freegeoip.net/json/').then(({ data: geoip }) => axios.post('http://localhost:9000/api/geoips', geoip))</script>
+    <title>Mocha Spec Runner</title>
+    <link rel="stylesheet" href="lib/mocha/mocha.css">
+    <script src="lib/jquery.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/mocha/mocha.js"></script>
+    <script src="lib/chai/chai.js"></script>
+    <script src="lib/sinon/sinon.js"></script>
+    <script>
+        mocha.setup('bdd');
+        window.expect = chai.expect;
+        $(function () {
+            window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
+        });
+    </script>
+    <script src="src/getElementsByClassName.js"></script>
+    <script src="src/stringifyJSON.js"></script>
+    <script src="src/parseJSON.js"></script>
+    <script src="spec/getElementsByClassNameSpec.js"></script>
+    <script src="spec/fixtures.js"></script>
+    <script src="spec/stringifyJSONSpec.js"></script>
+    <script src="spec/parseJSONSpec.js"></script>
+</head>
+
+<body>
+    <div id="mocha"></div>
+</body>
+
+</html>
