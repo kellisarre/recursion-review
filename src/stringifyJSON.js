@@ -8,8 +8,9 @@ var stringifyJSON = function(obj) {
   let result = '';
   function identifier(value){
     switch (typeof value) {
-      case "boolean": 
       case "string": 
+      return `"${value}"`;
+      case "boolean": 
       case "number": 
         return `${value}`;
       case 'undefined':
@@ -20,9 +21,20 @@ var stringifyJSON = function(obj) {
           //if the given value is an array add a open array bracket
           let arrResult = '['
           for(let i = 0; i < value.length ; i++){
-
+            if(i === value.length - 1){
+              arrResult += identifier(value[i]);
+            }else{
+              arrResult += identifier(value[i]) + ',';
+            }
           }
+          arrResult += ']';
+          return arrResult;
         }
+        if(value === null){
+          return 'null';
+        }
+
+        
     }
   }
   return identifier(obj);
