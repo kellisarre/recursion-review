@@ -33,8 +33,18 @@ var stringifyJSON = function(obj) {
         if(value === null){
           return 'null';
         }
-
-        
+        let objectResult = '{';
+        for (let prop in value) {
+          if (typeof value[prop] !== "function" && typeof value[prop] !== "undefined") {
+            if (prop === Object.keys(value)[Object.keys(value).length - 1]) {
+              objectResult += `"${prop}":${identifier(value[prop])}`;
+            } else {
+            objectResult += `"${prop}":${identifier(value[prop])},`;
+            }
+          }
+        }
+        objectResult += '}';
+        return objectResult; 
     }
   }
   return identifier(obj);
