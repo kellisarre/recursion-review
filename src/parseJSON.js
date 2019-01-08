@@ -10,6 +10,46 @@ var parseJSON = function(json) {
     currIndex++;
   }
 
+  function characterIs (char) {
+    switch (char) {
+      case "{":
+      // invoke objectMaker
+        return checkObject();
+      case "[":
+      // invoke arrayMaker
+      return checkArray();
+      case "\"": 
+      // invoke checkString
+      return checkString();
+      case "t":
+      // invoke checkTrue
+      return checkTrue();
+      case "f":
+      // invoke checkFalse
+      return checkFalse();
+      case "n":
+      // invoke checkNull
+      return checkNull();
+      default:
+      // checkNum
+      return checkNum();
+    }
+  }
+
+  // translate OBJECT
+  function checkObject() {
+    let result = {};
+    if (json[currIndex + 1] === "}") {return result;}
+
+  }
+
+  // translate ARRAY
+  function checkArray() {
+    let result = [];
+    if (json[currIndex + 1] === "]") { return result; }
+
+  }
+
   // SIMPLE DATATYPES
   // translate STRING
   function checkString(input) {
@@ -46,16 +86,13 @@ var parseJSON = function(json) {
     }
   }
 
-  // // translate NUMBER
-  // function checkNum() {
-  //   if () {}
-  // }
+  // translate NUMBER
+  function checkNum() {
+    //if () {}
+  }
 
+  return characterIs(currChar);
 
-
-  // if (json[currIndex] === "{" && json[currIndex + 1] === "\"") {
-  // // we are in an object
-  // }
 
 
 
@@ -72,14 +109,6 @@ var parseJSON = function(json) {
   //   }
   // }
 
-  // function characterIs (char) {
-  //   switch (char) {
-  //     case "{":
-  //     // invoke objectMaker
-  //     case "[":
-  //     // invoke arrayMaker
-  //   }
-  // }
 
   // // objectMaker
   //   // at first instance of }, find nearest {

@@ -8,8 +8,9 @@ describe('parseJSON', function() {
       var equality = _.isEqual(result, expected); // why can't we use `===` here?
       // Replace this line with an `expect` statement that tests
       // the behavior described by the `it` string
-      expect(equality).to.equal(true);
-      throw new Error('Test is missing.')
+      //expect(equality).to.equal(true);
+      expect(result).to.eql(expected);
+      //throw new Error('Test is missing.')
     });
   });
 
